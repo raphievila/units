@@ -31,17 +31,20 @@ class Units {
     }
     
     private static function auto($size) {
+        $kb = 1024;
         if (!is_numeric($size)) { abs($size); }
-        if ($size < 1000) { return 'b'; }
-        elseif ($size < 1000000) { return 'Kb'; }
-        elseif ($size < 1000000000) { return 'Mb'; }
-        elseif ($size < 1000000000000) { return 'Gb'; }
-        elseif ($size < 1000000000000000) { return 'Tb'; }
-        elseif ($size < 1000000000000000000) { return 'Pb'; }
-        elseif ($size < 1000000000000000000000) { return 'Eb'; }
-        elseif ($size < 1000000000000000000000000) { return 'Zb'; }
-        elseif ($size < 1000000000000000000000000000) { return 'Yb'; }
-        elseif ($size < 1000000000000000000000000000000) { return 'Bb'; }
+
+        if ($size < $kb) { return 'b'; }
+        elseif ($size < $kb * 1000) { return 'Kb'; }
+        elseif ($size < $kb * 1000000) { return 'Mb'; }
+        elseif ($size < $kb * 1000000000) { return 'Gb'; }
+        elseif ($size < $kb * 1000000000000) { return 'Tb'; }
+        elseif ($size < $kb * 1000000000000000) { return 'Pb'; }
+        elseif ($size < $kb * 1000000000000000000) { return 'Eb'; }
+        elseif ($size < $kb * 1000000000000000000000) { return 'Zb'; }
+        elseif ($size < $kb * 1000000000000000000000000) { return 'Yb'; }
+        elseif ($size < $kb * 1000000000000000000000000000) { return 'Bb'; }
+        else { return 'bits'; }
     }
 
     public static function diskStorage($filesize, $s = NULL) {

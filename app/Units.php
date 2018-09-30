@@ -204,7 +204,9 @@ class Units
         $feet = $result . 'ft';
         if (strpos($result, '.') > 0) {
             $numbers = explode('.', $result);
-            $inches =(isset($numbers[1]) && abs($numbers[1]) > 0) ? $ut->decToFraction(ceil(number_format($numbers[1] / 12, 2))) . 'in' : '';
+            $inches =(isset($numbers[1]) && abs($numbers[1]) > 0)
+                ? $ut->decToFraction(ceil(number_format($numbers[1] / 12, 2))) . 'in'
+                : '';
             $feet = $numbers[0] . 'ft';
             if (!empty($inches)) {
                 $feet .= ' '.$inches;
@@ -241,7 +243,9 @@ class Units
         default:
             $foot = false;
         }
-        $formula = ($foot && abs($dim) > $foot) ? self::_feetInches(abs($dim), $metricUnit) : number_format(abs($dim)/$metricUnit, 2) . 'in';
+        $formula = ($foot && abs($dim) > $foot)
+            ? self::_feetInches(abs($dim), $metricUnit)
+            : number_format(abs($dim)/$metricUnit, 2) . 'in';
         return $formula;
     }
 

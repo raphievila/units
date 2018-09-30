@@ -54,15 +54,15 @@ class Units {
         if (!is_numeric($size)) { abs($size); }
 
         if ($size < $kb) { return 'b'; }
-        elseif ($size < $kb * 1000) { return 'Kb'; }
-        elseif ($size < $kb * 1000000) { return 'Mb'; }
-        elseif ($size < $kb * 1000000000) { return 'Gb'; }
-        elseif ($size < $kb * 1000000000000) { return 'Tb'; }
-        elseif ($size < $kb * 1000000000000000) { return 'Pb'; }
-        elseif ($size < $kb * 1000000000000000000) { return 'Eb'; }
-        elseif ($size < $kb * 1000000000000000000000) { return 'Zb'; }
-        elseif ($size < $kb * 1000000000000000000000000) { return 'Yb'; }
-        elseif ($size < $kb * 1000000000000000000000000000) { return 'Bb'; }
+        elseif ($size < $kb * pow(10, 3)) { return 'Kb'; }
+        elseif ($size < $kb * pow(10, 6)) { return 'Mb'; }
+        elseif ($size < $kb * pow(10, 9)) { return 'Gb'; }
+        elseif ($size < $kb * pow(10, 12)) { return 'Tb'; }
+        elseif ($size < $kb * pow(10, 15)) { return 'Pb'; }
+        elseif ($size < $kb * pow(10, 18)) { return 'Eb'; }
+        elseif ($size < $kb * pow(10, 21)) { return 'Zb'; }
+        elseif ($size < $kb * pow(10, 24)) { return 'Yb'; }
+        elseif ($size < $kb * pow(10, 27)) { return 'Bb'; }
         else { return 'bits'; }
     }
 
@@ -79,35 +79,35 @@ class Units {
                 $ab = $s;
                 break;
             case 'Mb':
-                $cs = $kb * 1000;
+                $cs = $kb * pow(10, 3); //1000
                 $ab = $s;
                 break;
             case 'Gb':
-                $cs = $kb * 1000000;
+                $cs = $kb * pow(10, 6); //1000000
                 $ab = $s;
                 break;
             case 'Tb':
-                $cs = $kb * 1000000000;
+                $cs = $kb * pow(10, 9); //1000000000
                 $ab = $s;
                 break;
             case 'Pb':
-                $cs = $kb * 1000000000000;
+                $cs = $kb * pow(10, 12); //1000000000000;
                 $ab = $s;
                 break;
             case 'Eb':
-                $cs = $kb * 1000000000000000;
+                $cs = $kb * pow(10, 15); //1000000000000000;
                 $ab = $s;
                 break;
             case 'Zb':
-                $cs = $kb * 1000000000000000000;
+                $cs = $kb * pow(10, 18); //1000000000000000000;
                 $ab = $s;
                 break;
             case 'Yb':
-                $cs = $kb * 1000000000000000000000;
+                $cs = $kb * pow(10, 21); //1000000000000000000000;
                 $ab = $s;
                 break;
             case 'Bb':
-                $cs = $kb * 1000000000000000000000000;
+                $cs = $kb * pow(10, 24); //1000000000000000000000000;
                 $ab = $s;
                 break;
             default: $cs = 1;
@@ -138,7 +138,21 @@ class Units {
     static private function dimensionMetricsToInches($dim,$unit="cm"){
         if(abs($dim) < 1){ $unit='mm'; }
         $metricUnit = ($unit === 'cm')? 2.54 : 25.4;
-        $formula = (abs($dim) > 12) ? feet_inches(abs($dim),$metricUnit) : number_format(abs($dim)/$metricUnit,2) . 'in';
+        $foot = ($unit === 'cm')? 30.48 : 304.8;
+        switch($unit) {
+            case 'cm':
+                $foot = 30.48;
+                break;
+            case 'mm':
+                $foot = 304.8;
+                break;
+            case 'inches':
+                $foot = 12;
+                break;
+            default:
+                $foot = FALSE;
+        }
+        $formula = ($foot && abs($dim) > $foot) ? self::feet_inches(abs($dim),$metricUnit) : number_format(abs($dim)/$metricUnit,2) . 'in';
         return $formula;
     }
 

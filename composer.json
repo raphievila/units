@@ -1,0 +1,41 @@
+{
+    "name": "raphievila/units",
+    "description": "Unit coversion tool for web develpers and HTML or String output",
+    "type": "composer-plugin",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Rafael Vila",
+            "email": "rvila@revolutionvisualarts.com",
+            "homepage": "https://revolutionvisualarts.com",
+            "role": "developer"
+        }
+    ],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/raphievila/units.git",
+			"reference": "master"
+		}
+    ],
+	"support": {
+		"email": "rvila@revolutionvisualarts.com",
+		"forum": "http://designersgate.com"
+	},
+    "require": {
+		"php": "^5.3 || ^7.0",
+        "raphievila/utils": "v1.0.0"
+    },
+	"autoload": {
+		"psr-4": {
+			"Units\\": "app/",
+			"Vendor\\raphievila\\Tools\\Units\\": ""
+		},
+		"classmap": [ "app/" ]
+	},
+	"config": {
+		"github-protocols": ["git", "https", "http"]
+	},
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

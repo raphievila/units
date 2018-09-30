@@ -1,0 +1,105 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "dcb2cc5de78cbb53ab88bc03afe1789a",
+    "packages": [
+        {
+            "name": "raphievila/utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raphievila/utils.git",
+                "reference": "896a9bed0b273263e1e954bf22c3e197b7155863"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raphievila/utils/zipball/896a9bed0b273263e1e954bf22c3e197b7155863",
+                "reference": "896a9bed0b273263e1e954bf22c3e197b7155863",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0",
+                "raphievila/xtags": "^1.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Utils\\": "src/",
+                    "Vendor\\Utils\\": ""
+                },
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Vilá",
+                    "email": "rvila@revolutionvisualarts.com",
+                    "homepage": "https://revolutionvisualarts.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Swiss Knife - basic utilities for quick coding",
+            "time": "2018-04-03T17:36:54+00:00"
+        },
+        {
+            "name": "raphievila/xtags",
+            "version": "v1.0.4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raphievila/xtags.git",
+                "reference": "228f3ddf4e862ab985b7a02cf53c0b930d6bc6f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raphievila/xtags/zipball/228f3ddf4e862ab985b7a02cf53c0b930d6bc6f0",
+                "reference": "228f3ddf4e862ab985b7a02cf53c0b930d6bc6f0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xTags\\": "src/",
+                    "Vendor\\xTags\\": ""
+                },
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Vilá",
+                    "email": "rvila@revolutionvisualarts.com",
+                    "homepage": "https://revolutionvisualarts.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple way to create HTML tag directly into PHP code, no code breaks.",
+            "time": "2018-04-28T03:59:49+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "raphievila/utils": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

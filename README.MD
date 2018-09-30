@@ -11,15 +11,18 @@ raphievila/Units allows you to dynamcally add unit conversion features directly 
     $u = new Units();
 
     //By default format used is Inches to Centimeters
-    $u->returnDimension(1);
+    $u->returnDimensions(1);
 
     //this will return
     //1in (2.54cm)
 
     //To change format
     $u::$format = 'cm';
+    $u->returnDimensions(2.54);
 
-    $u->returnDimension(2.54);
+    //OR
+
+    $u = new Units(array('dim' => 2.54, 'format' => 'cm'));
 
     //this will return
     //2.54cm (1in)

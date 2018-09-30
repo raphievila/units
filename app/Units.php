@@ -164,12 +164,18 @@ class Units {
         return number_format((abs($dim)/1000) * 9.81, 2) . "N";
     }
 
-    static private function dimensionGramsToPound($dim){
-        return number_format(abs($dim) * 0.00220462262,2)."lbs";
+    static private function dimensionGramsToPound($dim, $force = FALSE){
+        $ab = ($force) ? "lbf" : "lbs";
+        return number_format(abs($dim) * 0.00220462262,2).$ab;
     }
 
     static private function dimensionPoundToGrams($dim){
         return number_format(abs($dim) * 453.6,2)."g";
+    }
+
+    static private function dimensionPoundToKilograms($dim) {
+        $result = number_format(abs($dim) * 0.4536, 2) . "kg";
+        return str_replace('.00', '', $result);
     }
 
     static private function dimensionPoundToNewtons($dim){
@@ -229,6 +235,8 @@ class Units {
                 return self::dimensionPoundToGrams($dimension);
             case 'grams':
                 return self::dimensionGramsToPound($dimension);
+            case 'grams_force':
+                return self::dimensionGramsToPound($dimension, TRUE);
             case 'ounces':
                 return self::dimensionOuncesToGrams($dimension);
             case 'grams_ounces':
@@ -237,6 +245,8 @@ class Units {
                 return self::dimensionGramsToKilogram($dimension);
             case 'grams_newtons':
                 return self::dimensionGramsToNewtons($dimension);
+            case 'pounds_kilograms':
+                return self::dimensionPoundToKilograms($dimension);
             case 'pounds_newtons':
                 return self::dimensionPoundToNewtons($dimension);
             case 'newtons_pounds':

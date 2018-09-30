@@ -270,31 +270,49 @@ class Units {
 
     static private function returnDimensionWithUnit($dimension,$format){
         $ut = self::$u;
+        $x = new xTags();
         $units = array(
-            'inches'=>'in',
-            'cm'=>'cm',
-            'mm'=>'mm',
-            'pounds'=>'lbs',
-            'grams'=>'g',
-            'ounces'=>'oz',
-            'grams_ounces'=>'g',
-            'grams_kilogram'=>'g',
-            'grams_newtons'=>'g',
-            'pounds_newtons'=>'lbf',
-            'newtons_pounds'=>'N',
-            'fahrenheit'=>'&deg;F',
-            'fahrenheit_kelvin'=>'&deg;F',
-            'celsius'=>'&deg;C',
-            'celsius_kelvin'=>'&deg;C',
-            'kelvin'=>'&deg;K',
-            'kelvin_celcius'=>'&deg;K'
+            'inches' => 'in',
+            'cm' => 'cm',
+            'mm' => 'mm',
+            'pounds' => 'lbs',
+            'grams' => 'g',
+            'grams_force' => 'gf',
+            'ounces' => 'oz',
+            'pounds_newtons' => 'lbf',
+            'newtons_pounds' => 'N',
+            'fahrenheit' => '&deg;F',
+            'celsius' => '&deg;C',
+            'celsius_kelvin' => '&deg;C',
+            'kelvin' => '&deg;K',
+            'kelvin_celcius' => '&deg;K'
             );
+        
         switch($format){
             case 'inches':
-                return $ut->decToFraction($dimension).'in';
+                $unit = $ut->decToFraction($dimension).'in';
+                break;
+            case 'pounds_kilograms':
+                $unit = $dimension.'lbs';
+                break;
             default:
-                return $dimension.$units[$format];
+                $unit = (isset($units[$format])) ? $dimension.$units[$format] : FALSE;
         }
+        
+        if (!$unit) {
+            if (preg_match('/^grams_/', $format)) {
+                $force = ($format === 'grams_newtons')? 'f' : '';
+                $unit = $dimension.'g'.$force;
+            } elseif (preg_match('/^fahrenheit_/', $format)) {
+                $unit = $dimension.'&deg;F';
+            } elseif (preg_match('/^celcius_/', $format)) {
+                $unit = $dimension.'&deg;C';
+            } elseif (preg_match('/^kelvin_/', $format)) {
+                $unit = $dimension.'&deg;K';
+            }
+        }
+        
+        return $unit;
     }
 
     static private function returnConvertion($dimension, $format){
